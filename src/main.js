@@ -1,8 +1,25 @@
 import Vue from 'vue';
+import VueRouter from 'vue-router';
 import App from './App';
-// 下面这行的注释可以让eslint跳过某条规则.
-/* eslint-disable no-new */
-new Vue({
-  el: 'body',
-  components: {App}
+import goods from 'components/goods/goods';
+import ratings from 'components/ratings/ratings';
+import seller from 'components/seller/seller';
+Vue.use(VueRouter);
+
+let app = Vue.extend(App);
+
+let router = new VueRouter();
+
+router.map({
+  '/goods': {
+    component: goods
+  },
+  '/ratings': {
+    component: ratings
+  },
+  '/seller': {
+    component: seller
+  }
 });
+
+router.start(app, '#app');

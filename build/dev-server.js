@@ -14,6 +14,40 @@ var port = process.env.PORT || config.dev.port
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+// mock data start
+// 自己定义的部分,使用node的express框架
+var appData = require('../data.json')
+var seller = appData.seller;
+var goods = appData.goods;
+var ratings = appData.ratings;
+
+// 定义express Router
+var apiRoutes = express.Router();
+// 定义一个接口的方法
+apiRoutes.get('/seller', function (req, res) {
+  res.json({
+    errno: 0,
+    data: seller
+  });
+});
+
+apiRoutes.get('/goods', function (req, res) {
+  res.json({
+    errno: 0,
+    data: goods
+  });
+});
+
+apiRoutes.get('/ratings', function (req, res) {
+  res.json({
+    errno: 0,
+    data: ratings
+  });
+});
+
+app.use('/api', apiRoutes);
+// mock data 结束
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

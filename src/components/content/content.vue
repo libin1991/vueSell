@@ -1,7 +1,5 @@
 <template>
-    <div class="header">
-      I am header!!!
-    </div>
+    <div class="hello"></div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -9,9 +7,9 @@
         data () {
             return {
                 msg: 'Hello World!'
-            };
+            }
         }
-    };
+    }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

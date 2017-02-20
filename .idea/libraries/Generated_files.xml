@@ -13,9 +13,12 @@
         <item url="file://$PROJECT_DIR$/dist/build/dev-server.js" />
         <item url="file://$PROJECT_DIR$/dist/model/build/webpack.base.conf.js" />
         <item url="file://$PROJECT_DIR$/dist/model/build/build.js" />
+        <item url="file://$PROJECT_DIR$/dist/build/webpack.base.conf.js" />
         <item url="file://$PROJECT_DIR$/dist/model/src/main.js" />
         <item url="file://$PROJECT_DIR$/dist/model/prod.server.js" />
+        <item url="file://$PROJECT_DIR$/dist/src/main.js" />
         <item url="file://$PROJECT_DIR$/dist/model/.eslintrc.js" />
+        <item url="file://$PROJECT_DIR$/dist/.eslintrc.js" />
         <item url="file://$PROJECT_DIR$/dist/model/config/prod.env.js" />
       </sourceFilesUrls>
     </properties>
@@ -31,9 +34,12 @@
       <root url="file://$PROJECT_DIR$/dist/build/dev-server.js" />
       <root url="file://$PROJECT_DIR$/dist/model/build/webpack.base.conf.js" />
       <root url="file://$PROJECT_DIR$/dist/model/build/build.js" />
+      <root url="file://$PROJECT_DIR$/dist/build/webpack.base.conf.js" />
       <root url="file://$PROJECT_DIR$/dist/model/src/main.js" />
       <root url="file://$PROJECT_DIR$/dist/model/prod.server.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/main.js" />
       <root url="file://$PROJECT_DIR$/dist/model/.eslintrc.js" />
+      <root url="file://$PROJECT_DIR$/dist/.eslintrc.js" />
       <root url="file://$PROJECT_DIR$/dist/model/config/prod.env.js" />
     </CLASSES>
     <SOURCES />

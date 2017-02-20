@@ -15,7 +15,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.vue'],
     fallback: [path.join(__dirname, '../node_modules')],
-    // 配置目录的别名,所以在components目录下的main.js可以认识components这个目录,而不需要去使用相对路径
+    // 配置目录的别名,所以在components目录下的main.js可以认识components这个目录,而不需要去使用相对路径.
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),

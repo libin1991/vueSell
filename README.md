@@ -1,6 +1,6 @@
-# sell
+# vue高仿饿了么APP
 
-> A Vue.js project
+> 慕课网实战课程---Vue.js高仿饿了么外卖App
 
 ## Build Setup
 
@@ -16,9 +16,6 @@ npm run build
 
 # run unit tests
 npm run unit
-
-# run e2e tests
-npm run e2e
 
 # run all tests
 npm test

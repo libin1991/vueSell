@@ -4,11 +4,15 @@ import App from './App';
 import goods from 'components/goods/goods';
 import ratings from 'components/ratings/ratings';
 import seller from 'components/seller/seller';
+import 'common/stylus/index.styl';
+
 Vue.use(VueRouter);
 
 let app = Vue.extend(App);
 
-let router = new VueRouter();
+let router = new VueRouter({
+  linkActiveClass: 'active'
+});
 
 router.map({
   '/goods': {
@@ -21,5 +25,7 @@ router.map({
     component: seller
   }
 });
-
+// 启用router
 router.start(app, '#app');
+// 启动时默认的地方
+router.go('/goods');

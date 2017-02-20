@@ -1,7 +1,7 @@
 <template>
-    <div class="header">
+    <h1 class="header">
       I am header!!!
-    </div>
+    </h1>
 </template>
 
 <script type="text/ecmascript-6">

@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab border-1px">
       <div class="tab-item">
         <a v-link="{ path: '/goods' }">商品</a>
@@ -20,7 +20,24 @@
 
 <script type="text/ecmascript-6">
   import header from './components/header/header.vue';
+
+  const ERR_OK = 0;
+
   export default {
+      data() {
+        return {
+          seller: {}
+        };
+      },
+      created() {
+        this.$http.get('/api/seller').then((response) => {
+          response = response.body;
+          if (response.errno === ERR_OK) {
+            this.seller = response.data;
+            console.log(this.seller);
+          }
+        });
+      },
       components: {
           'v-header': header
       }
@@ -37,12 +54,15 @@
     line-height: 40px
     border-1px(rgba(7, 17, 27, .1))
     .tab-item
+      display: flex
       flex: 1
       text-align: center
+      justify-content: center
+      align-items: center
       & > a
-        /*TODO:a标签需要垂直居中,如何做到?*/
         display: block
         font-size: 14px
+        text-align :center
         color: rgb(77, 85, 93)
         line-height: 14px
         &.active

@@ -37,14 +37,7 @@
       <div class="detail-wrapper clearfix">
         <!--这个层真正的用于承载内容-->
         <div class="detail-main">
-          <p>{{seller.bulletin}}</p>
-          <p>{{seller.bulletin}}</p>
-          <p>{{seller.bulletin}}</p>
-          <p>{{seller.bulletin}}</p>
-          <p>{{seller.bulletin}}</p>
-          <p>{{seller.bulletin}}</p>
-          <p>{{seller.bulletin}}</p>
-          <p>{{seller.bulletin}}</p>
+          <h1 class="name">{{seller.name}}</h1>
         </div>
       </div>
       <!--这个层是定在页面底部的一个层-->
@@ -65,7 +58,7 @@
     },
     data () {
       return {
-        detailShow: false
+        detailShow: true
       };
     },
     methods: {
@@ -207,10 +200,18 @@
       background: rgba(7, 17, 27, .8)
       .detail-wrapper
         min-height: 100%
+        min-width :100%
         .detail-main
           margin-top: 64px
           /*padding一定需要*/
           padding-bottom: 64px
+          .name
+            width :100%
+            text-align :center
+            line-height: 16px
+            font-size: 16px
+            color: #fff
+            font-weight: 700
       .detail-close
         position: relative
         width: 32px

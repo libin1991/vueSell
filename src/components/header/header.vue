@@ -31,7 +31,28 @@
     <div class="background">
       <img :src="seller.avatar" width="100%" height="100%" alt="">
     </div>
-    <div v-show="detailShow" class="detail" @click="hideDetail"></div>
+    <!--css sticky footer 布局开始-->
+    <div v-show="detailShow" class="detail">
+      <!--这个层是内容的包装层-->
+      <div class="detail-wrapper clearfix">
+        <!--这个层真正的用于承载内容-->
+        <div class="detail-main">
+          <p>{{seller.bulletin}}</p>
+          <p>{{seller.bulletin}}</p>
+          <p>{{seller.bulletin}}</p>
+          <p>{{seller.bulletin}}</p>
+          <p>{{seller.bulletin}}</p>
+          <p>{{seller.bulletin}}</p>
+          <p>{{seller.bulletin}}</p>
+          <p>{{seller.bulletin}}</p>
+        </div>
+      </div>
+      <!--这个层是定在页面底部的一个层-->
+      <div class="detail-close" @click="hideDetail">
+        <i class="icon-close"></i>
+      </div>
+    </div>
+    <!--css sticky footer布局结束-->
   </div>
 </template>
 
@@ -44,15 +65,15 @@
     },
     data () {
       return {
-          detailShow: false
+        detailShow: false
       };
     },
     methods: {
       showDetail () {
-          this.detailShow = true;
+        this.detailShow = true;
       },
       hideDetail () {
-          this.detailShow = false;
+        this.detailShow = false;
       }
     },
     created () {
@@ -176,13 +197,26 @@
       z-index: -1
       filter: blur(10px)
     .detail
-      position :fixed
-      z-index :100
+      position: fixed
+      z-index: 100
       top: 0
       left: 0
-      width :100%
-      height :100%
-      overflow :auto
-      background :rgba(7,17,27,.8)
-      dfd:f
+      width: 100%
+      height: 100%
+      overflow: auto
+      background: rgba(7, 17, 27, .8)
+      .detail-wrapper
+        min-height: 100%
+        .detail-main
+          margin-top: 64px
+          /*padding一定需要*/
+          padding-bottom: 64px
+      .detail-close
+        position: relative
+        width: 32px
+        height: 32px
+        /*关键的部分margin*/
+        margin -64px auto 0 auto
+        clear: both
+        font-size: 32px
 </style>

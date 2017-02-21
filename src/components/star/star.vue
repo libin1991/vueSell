@@ -1,11 +1,10 @@
 <template>
   <div class="star" :class="starType">
-    <span v-for="itemClass in itemClasses" :class="itemClass" class="star-item"></span>
+    <span v-for="itemClass in itemClasses" :class="itemClass" class="star-item" track-by="$index"></span>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import "../../common/stylus/mixin.styl"
   const LENGTH = 5;
   const CLS_ON = 'on';
   const CLS_HALF = 'half';
@@ -24,30 +23,32 @@
       starType () {
         return 'star-' + this.size;
       },
-      itemClass () {
+      itemClasses () {
         let result = [];
-        let score = Math.floor(this.score*2)/2;
+        let score = Math.floor(this.score * 2) / 2;
         let hasDecimal = score % 1 !== 0;
         let integer = Math.floor(score);
-        for (let i=0;i<integer;i++) {
+        for (let i = 0; i < integer; i++) {
             result.push(CLS_ON);
         }
         if (hasDecimal) {
-            result.push(CLS_HALF);
+          result.push(CLS_HALF);
         }
         while (result.length < LENGTH) {
             result.push(CLS_OFF);
         }
+        console.log(result);
+        return result;
       }
     }
-
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" rel="stylesheet/stylus">
+  @import '../../common/stylus/mixin.styl';
   .star
-    font-size: 0
+    /*font-size: 0*/
     .star-item
       display: inline-block
       background-repeat: no-repeat

@@ -38,6 +38,9 @@
         <!--这个层真正的用于承载内容-->
         <div class="detail-main">
           <h1 class="name">{{seller.name}}</h1>
+          <div class="star-wrapper">
+            <star :size="48" :score="seller.score"></star>
+          </div>
         </div>
       </div>
       <!--这个层是定在页面底部的一个层-->
@@ -50,6 +53,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import star from 'components/star/star';
   export default {
     props: {
       seller: {
@@ -71,6 +75,9 @@
     },
     created () {
       this.classMap = ['decrease', 'discount', 'spcial', 'invoice', 'guarantee'];
+    },
+    components: {
+      star
     }
   };
 </script>
@@ -200,18 +207,22 @@
       background: rgba(7, 17, 27, .8)
       .detail-wrapper
         min-height: 100%
-        min-width :100%
+        min-width: 100%
         .detail-main
           margin-top: 64px
           /*padding一定需要*/
           padding-bottom: 64px
           .name
-            width :100%
-            text-align :center
+            width: 100%
+            text-align: center
             line-height: 16px
             font-size: 16px
             color: #fff
             font-weight: 700
+          .star-wrapper
+            margin-top: 18px
+            padding: 2px 0
+            text-align: center
       .detail-close
         position: relative
         width: 32px

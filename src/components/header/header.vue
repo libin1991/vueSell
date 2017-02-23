@@ -41,6 +41,17 @@
           <div class="star-wrapper">
             <star :size="48" :score="seller.score"></star>
           </div>
+          <div class="title">
+            <div class="line"></div>
+            <div class="text">优惠信息</div>
+            <div class="line"></div>
+          </div>
+          <ul v-if="seller.supports" class="supports">
+            <li class="support-item" v-for="item in seller.supports">
+              <span class="icon" :class="classMap[seller.supports[0]"></span>
+              <span class="text"></span>
+            </li>
+          </ul>
         </div>
       </div>
       <!--这个层是定在页面底部的一个层-->
@@ -187,7 +198,6 @@
         right: 12px
         top: 10px
         font-size: 10px
-      sadf: f
     .background
       position: absolute
       top: 0
@@ -223,11 +233,24 @@
             margin-top: 18px
             padding: 2px 0
             text-align: center
+          .title
+            display: flex
+            width: 80%
+            margin: 28px auto 24px auto
+            .line
+              flex: 1
+              position: relative
+              top: -6px
+              border-bottom: 1px solid rgba(255, 255, 255, .2)
+            .text
+              padding: 0 12px
+              font-size: 14px
+              font-weight :700
       .detail-close
         position: relative
         width: 32px
         height: 32px
-        /*关键的部分margin*/
+        /*关键的部分margin一定要是负值*/
         margin -64px auto 0 auto
         clear: both
         font-size: 32px

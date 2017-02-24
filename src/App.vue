@@ -38,7 +38,7 @@
         });
       },
       components: {
-          'v-header': header
+        'v-header': header
       }
   };
 

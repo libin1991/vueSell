@@ -64,7 +64,7 @@
     },
     data () {
       return {
-        detailShow: true
+        detailShow: false
       };
     },
     methods: {
@@ -76,7 +76,7 @@
       }
     },
     created () {
-      this.classMap = ['decrease', 'discount', 'spcial', 'invoice', 'guarantee'];
+      this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     },
     components: {
       star, mask

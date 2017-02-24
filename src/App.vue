@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <v-header :seller="seller"></v-header>
     <div class="tab border-1px">

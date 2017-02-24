@@ -32,7 +32,7 @@
       <img :src="seller.avatar" width="100%" height="100%" alt="">
     </div>
     <!--css sticky footer 布局开始-->
-    <div v-show="detailShow" class="detail">
+    <div v-show="detailShow" class="detail" transition="fade">
       <!--这个层是内容的包装层-->
       <div class="detail-wrapper clearfix">
         <!--这个层真正的用于承载内容-->
@@ -48,10 +48,18 @@
           </div>
           <ul v-if="seller.supports" class="supports">
             <li class="support-item" v-for="item in seller.supports">
-              <span class="icon" :class="classMap[seller.supports[0]"></span>
-              <span class="text"></span>
+              <span class="icon" :class="classMap[seller.supports[$index].type]">{{seller.supports[0].type}}</span>
+              <span class="text">{{seller.supports[$index].description}}</span>
             </li>
           </ul>
+          <div class="title">
+            <div class="line"></div>
+            <div class="text">商家公告</div>
+            <div class="line"></div>
+          </div>
+          <div class="bulletin">
+            <p class="content">{{seller.bulletin}}</p>
+          </div>
         </div>
       </div>
       <!--这个层是定在页面底部的一个层-->
@@ -73,7 +81,7 @@
     },
     data () {
       return {
-        detailShow: true
+        detailShow: false
       };
     },
     methods: {
@@ -150,7 +158,6 @@
               bg-image('invoice_1')
             &.special
               bg-image('special_1')
-
           .text
             font-size: 10px
             line-height: 10px
@@ -214,7 +221,13 @@
       width: 100%
       height: 100%
       overflow: auto
-      background: rgba(7, 17, 27, .8)
+      transition: all .5s
+      &.fade-transition
+        opacity: 1
+        background: rgba(7, 17, 27, .8)
+      &.fade-enter, &.fade-leave
+        opacity: 0
+        background: rgba(7, 17, 27, .8)
       .detail-wrapper
         min-height: 100%
         min-width: 100%
@@ -245,7 +258,44 @@
             .text
               padding: 0 12px
               font-size: 14px
-              font-weight :700
+              font-weight: 700
+          .supports
+            width: 80%
+            margin: 0 auto;
+            .support-item
+              padding: 0 12px
+              margin-bottom: 12px
+              font-size: 0
+              &:last-child
+                margin-bottom: 0
+              .icon
+                display: inline-block
+                width: 16px
+                height: 16px
+                vertical-align: top
+                margin-right: 6px
+                background-size 16px 16px
+                background-repeat: no-repeat
+                &.decrease
+                  bg-image('decrease_2')
+                &.discount
+                  bg-image('discount_2')
+                &.guarantee
+                  bg-image('guarantee_2')
+                &.invoice
+                  bg-image('invoice_2')
+                &.special
+                  bg-image('special_2')
+              .text
+                line-height: 16px
+                font-size: 12px
+          .bulletin
+            width: 80%
+            margin: 0 auto
+            .content
+              padding: 0 12px
+              line-height: 24px
+              font-size: 12px
       .detail-close
         position: relative
         width: 32px

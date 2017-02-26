@@ -2,6 +2,13 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/dist/testetste/config/index.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/build/webpack.dev.conf.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/build/build.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/build/webpack.base.conf.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/.eslintrc.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/config/prod.env.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/config/test.env.js" />
         <item url="file://$PROJECT_DIR$/dist/model/config/test.env.js" />
         <item url="file://$PROJECT_DIR$/dist/model/build/dev-server.js" />
         <item url="file://$PROJECT_DIR$/dist/model/build/webpack.prod.conf.js" />
@@ -20,9 +27,22 @@
         <item url="file://$PROJECT_DIR$/dist/model/.eslintrc.js" />
         <item url="file://$PROJECT_DIR$/dist/.eslintrc.js" />
         <item url="file://$PROJECT_DIR$/dist/model/config/prod.env.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/build/utils.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/config/dev.env.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/src/main.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/build/dev-server.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/build/dev-client.js" />
+        <item url="file://$PROJECT_DIR$/dist/testetste/build/webpack.prod.conf.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
+      <root url="file://$PROJECT_DIR$/dist/testetste/config/index.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/build/webpack.dev.conf.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/build/build.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/build/webpack.base.conf.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/.eslintrc.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/config/prod.env.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/config/test.env.js" />
       <root url="file://$PROJECT_DIR$/dist/model/config/test.env.js" />
       <root url="file://$PROJECT_DIR$/dist/model/build/dev-server.js" />
       <root url="file://$PROJECT_DIR$/dist/model/build/webpack.prod.conf.js" />
@@ -41,6 +61,12 @@
       <root url="file://$PROJECT_DIR$/dist/model/.eslintrc.js" />
       <root url="file://$PROJECT_DIR$/dist/.eslintrc.js" />
       <root url="file://$PROJECT_DIR$/dist/model/config/prod.env.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/build/utils.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/config/dev.env.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/src/main.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/build/dev-server.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/build/dev-client.js" />
+      <root url="file://$PROJECT_DIR$/dist/testetste/build/webpack.prod.conf.js" />
     </CLASSES>
     <SOURCES />
   </library>

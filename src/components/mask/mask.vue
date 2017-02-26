@@ -33,7 +33,7 @@
         }
       },
       created () {
-        this.classMap = ['decrease', 'discount', 'spcial', 'invoice', 'guarantee'];
+        this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
       }
     };
 </script>

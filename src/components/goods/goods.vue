@@ -2,7 +2,8 @@
   <div class="goods">
     <div class="menu-wrapper" v-el:menu-wrapper>
       <ul>
-        <li v-for="item in goods" class="menu-item">
+        <li v-for="item in goods" class="menu-item" :class="{'current':currentIndex===$index}"
+            @click="selectMenu($index,$event)">
           <span class="text border-1px">
             <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>
             {{item.name}}
@@ -57,11 +58,15 @@
     },
     computed: {
       currentIndex() {
-          for (let i=0;i<this.listHeight.length;i++) {
-              let height1 = this.listHeight[i];
-              let height2 = this.listHeight[i+1];
-
+        for (let i = 0; i < this.listHeight.length; i++) {
+          let height1 = this.listHeight[i];
+          let height2 = this.listHeight[i + 1];
+          if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
+//            console.log(i);
+            return i;
           }
+        }
+        return 0;
       }
     },
     created () {
@@ -78,29 +83,41 @@
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
     },
     methods: {
+      selectMenu(index, event) {
+          console.log(event);
+        if (!event._constructed) {
+          return;
+          // BScroll派发的事件会有这个属性.如果是浏览器派发的事件的时候,return
+        }
+        console.log(index);
+      },
       // 使用better-scroll库
       _initScroll() {
-        this.menuScroll = new BScroll(this.$els.menuWrapper, {});
+        this.menuScroll = new BScroll(this.$els.menuWrapper, {
+          click: true
+        });
         this.foodsScroll = new BScroll(this.$els.foodsWrapper, {
-            // 实时监听位置
-            probeType: 3
+          // 实时监听位置
+          probeType: 3
         });
 
         this.foodsScroll.on('scroll', (pos) => {
 //            let scroollY;
-            this.scrollY = Math.abs(Math.round(pos.y));
+//          console.log(pos);
+          this.scrollY = Math.abs(Math.round(pos.y));
 //            console.log(scrollY);
         });
       },
       _calculateHeight() {
-        let foodList = this.$els.foodsWrapper.getElementsByClassName('food-item-hook');
+        let foodList = this.$els.foodsWrapper.getElementsByClassName('food-list-hook');
+        console.dir(foodList);
+//        console.log(foodList.length);
         let height = 0;
         this.listHeight.push(height);
         for (let i = 0; i < foodList.length; i++) {
-            let item = foodList[i];
-            height += item.clientHeight;
-            this.itemHeight.push(height);
-//            console.log(itemHeight);
+          let item = foodList[i];
+          height += item.clientHeight;
+          this.listHeight.push(height);
         }
       }
     }
@@ -125,6 +142,14 @@
         width: 56px
         padding: 0 12px
         line-heightL: 14px
+        &.current
+          position: relative
+          z-index: 10
+          margin-top: -1px
+          background-color: #ffffff
+          font-weight: 700
+          .text
+            border-none()
         .icon
           display: inline-block
           vertical-align: top

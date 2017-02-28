@@ -1,6 +1,12 @@
 <template xmlns:v-el="http://www.w3.org/1999/xhtml">
   <div class="goods">
     <div class="menu-wrapper" v-el:menu-wrapper>
+      <!--在使用vue做开发的时候,如果需要和原生的一些js库做交互的时候,
+      有以下步骤:
+      1.使用v-el接口
+      2.用访问原生DOM的方式进行访问.
+      3.注意操作DOM的话,在this.$nextTick这个接口的回调中操作
+      -->
       <ul>
         <li v-for="item in goods" class="menu-item" :class="{'current':currentIndex===$index}"
             @click="selectMenu($index,$event)">
@@ -84,12 +90,15 @@
     },
     methods: {
       selectMenu(index, event) {
-          console.log(event);
+//          console.log(event);
         if (!event._constructed) {
           return;
           // BScroll派发的事件会有这个属性.如果是浏览器派发的事件的时候,return
         }
-        console.log(index);
+        let foodList = this.$els.foodsWrapper.getElementsByClassName('food-list-hook');
+        let el = foodList[index];
+        this.foodsScroll.scrollToElement(el, 300);
+//        console.log(index);
       },
       // 使用better-scroll库
       _initScroll() {
@@ -110,7 +119,7 @@
       },
       _calculateHeight() {
         let foodList = this.$els.foodsWrapper.getElementsByClassName('food-list-hook');
-        console.dir(foodList);
+//        console.dir(foodList);
 //        console.log(foodList.length);
         let height = 0;
         this.listHeight.push(height);

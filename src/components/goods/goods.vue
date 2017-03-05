@@ -45,7 +45,7 @@
         </li>
       </ul>
     </div>
-    <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"
+    <shopcart v-ref:shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"
               :select-foods="selectFoods"></shopcart>
   </div>
 
@@ -119,6 +119,12 @@
         this.foodsScroll.scrollToElement(el, 300);
 //        console.log(index);
       },
+      _drop(target) {
+          // 体验优化,异步加载动画
+        this.$nextTick(() => {
+          this.$refs.shopcart.drop(target);
+        });
+      },
       // 使用better-scroll库
       _initScroll() {
         this.menuScroll = new BScroll(this.$els.menuWrapper, {
@@ -153,6 +159,11 @@
     components: {
       shopcart,
       cartcontrol
+    },
+    events: {
+      'cart.add'(target) {
+        this._drop(target);
+      }
     }
   };
 </script>
@@ -174,7 +185,7 @@
         height: 54px
         width: 56px
         padding: 0 12px
-        line-heightL: 14px
+        line-height: 14px
         &.current
           position: relative
           z-index: 10
@@ -260,7 +271,7 @@
               text-decoration: line-through
               color: rgb(147, 153, 159)
           .cartcontrol-wrapper
-            position: absolute;
+            position: absolute
             right: 0
             bottom: 12px
 </style>

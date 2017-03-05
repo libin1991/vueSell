@@ -1,6 +1,6 @@
 <template>
   <div class="cartcontrol">
-    <div class="cart-decrease icon-remove_circle_outline" v-show="food.count>0" @click="decreaseCart" transition="move">
+    <div class="cart-decrease" v-show="food.count>0" @click="decreaseCart" transition="move">
       <span class="inner icon-remove_circle_outline"></span>
     </div>
     <div class="cart-count" v-show="food.count>0">{{food.count}}</div>
@@ -31,6 +31,7 @@
         } else {
           this.food.count++;
         }
+        this.$dispatch('cart.add', event.target);
       },
       decreaseCart(event) {
         if (!event._constructed) {
@@ -51,24 +52,22 @@
     .cart-decrease
       display: inline-block
       padding: 6px
-      transition: all .4s linear
+      transition: all 0.4s linear
       &.move-transition
         opacity: 1
-        transform: translate3D(0, 0, 0)
+        transform: translate3d(0, 0, 0)
       .inner
         display: inline-block
         line-height: 24px
         font-size: 24px
         color: rgba(0, 160, 220, 1)
-        transition: all .4s linear
+        transition: all 0.4s linear
         transform: rotate(0)
       &.move-enter, &.move-leave
         opacity: 0
-        transform: translate3D(24px, 0, 0)
+        transform: translate3d(24px, 0, 0)
         .inner
           transform: rotate(180deg)
-    .cart-decrease
-      display: inline-block
     .cart-count
       display: inline-block
       vertical-align: top

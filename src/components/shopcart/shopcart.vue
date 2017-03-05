@@ -16,6 +16,11 @@
           {{payDesc}}
         </div>
       </div>
+      <div class="ball-cotainer">
+        <div transition="drop" class="ball" v-for="ball in balls" v-show="ball.show">
+          <div class="inner inner-hook"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,19 +48,38 @@
         default: 0
       }
     },
+    data() {
+      return {
+        balls: [
+          {
+            show: false
+          }, {
+            show: false
+          }, {
+            show: false
+          }, {
+            show: false
+          }, {
+            show: false
+          }
+        ]
+      };
+    },
     computed: {
       totalPrice() {
         let total = 0;
         this.selectFoods.forEach((food) => {
           total += food.price * food.count;
-        });
+      });
         return total;
       },
       totalCount() {
         let count = 0;
-        this.selectFoods.forEach((food) => {
+        this.selectFoods.forEach((food)
+          = >
+        {
           count += food.count;
-        });
+      });
         return count;
       },
       payDesc() {
@@ -168,4 +192,19 @@
           &.enough
             background-color: #00b43c
             color: #fff
+      .ball-container
+        .ball
+          position: fixed
+          left: 32px
+          right: 22px
+          z-index: 200
+          &.drop-transiton
+            transition: all 0.4s
+            .inner
+              width: 16px
+              height: 16px
+              border-radius: 50%
+              background-color: rgb(0, 160, 220)
+              transition: all 0.4s
+
 </style>

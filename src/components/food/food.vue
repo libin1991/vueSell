@@ -1,6 +1,10 @@
 <template>
   <div class="food" v-show="showFlag" transition="move">
-
+    <div class="food-content">
+      <div class="image-header">
+        <img :src="food.image" alt="" width="100%"/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,7 +28,6 @@
     }
   };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus" rel="stylesheet/stylus">
   .food

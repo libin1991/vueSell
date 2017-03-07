@@ -22,7 +22,7 @@
         <li v-for="item in goods" class="food-list food-list-hook">
           <h1 class="title">{{item.name}}</h1>
           <ul>
-            <li v-for="food in item.foods" class="food-item border-1px">
+            <li v-for="food in item.foods" class="food-item border-1px" @click="selectFood(food,$event)">
               <div class="icon">
                 <img :src="food.icon" width="57" height="57" alt="">
               </div>
@@ -48,12 +48,13 @@
     <shopcart v-ref:shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"
               :select-foods="selectFoods"></shopcart>
   </div>
-
+  <food :food="selectedFood" v-ref:food></food>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll';
   import shopcart from 'components/shopcart/shopcart';
+  import food from 'components/food/food';
   import cartcontrol from 'components/cartcontrol/cartcontrol';
   const ERR_OK = 0;
   export default {
@@ -66,7 +67,8 @@
       return {
         goods: [],
         listHeight: [],
-        scrollY: 0
+        scrollY: 0,
+        selectedFood: {}
       };
     },
     computed: {
@@ -119,8 +121,16 @@
         this.foodsScroll.scrollToElement(el, 300);
 //        console.log(index);
       },
+      selectFood(food, $event) {
+        if (!$event._constructed) {
+          return;
+          // BScroll派发的事件会有这个属性.如果是浏览器派发的事件的时候,return
+        }
+        this.selectedFood = food;
+        this.$refs.food.show();
+      },
       _drop(target) {
-          // 体验优化,异步加载动画
+        // 体验优化,异步加载动画
         this.$nextTick(() => {
           this.$refs.shopcart.drop(target);
         });
@@ -158,7 +168,8 @@
     },
     components: {
       shopcart,
-      cartcontrol
+      cartcontrol,
+      food
     },
     events: {
       'cart.add'(target) {

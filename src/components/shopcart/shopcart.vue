@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-el="http://www.w3.org/1999/xhtml">
   <div class="shopcart">
     <div class="content" @click="toggleList">
       <div class="content-left">
@@ -367,5 +367,4 @@
             position: absolute
             right: 0
             bottom: 6px
-
 </style>

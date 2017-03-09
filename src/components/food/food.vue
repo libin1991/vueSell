@@ -29,7 +29,7 @@
       <split v-show="food.info"></split>
       <div class="rating">
         <h1 class="title">商品评价</h1>
-        <ratingselect :select-type="selectType" :only-content="onlyContent" :desc="desc" :ratings="food,ratings"></ratingselect>
+        <ratingselect :select-type="selectType" :only-content="onlyContent" :desc="desc" :ratings="food.ratings"></ratingselect>
       </div>
     </div>
   </div>

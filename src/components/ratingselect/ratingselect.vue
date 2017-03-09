@@ -124,7 +124,7 @@
         margin-right: 4px
         font-size: 24px
       .text
+        display: inline-block
         vertical-align: top
         font-size: 12px
-      test: twst
 </style>

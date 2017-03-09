@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-el="http://www.w3.org/1999/xhtml">
   <div class="food" v-show="showFlag" transition="move" v-el:food>
     <div class="food-content">
       <div class="image-header">
@@ -14,11 +14,23 @@
           <span class="now">￥{{food.price}}</span>
           <span v-show="food.oldPrice" class="old">￥{{food.oldPrice}}</span>
         </div>
+        <div class="cartcontrol-wrapper">
+          <cartcontrol :food="food"></cartcontrol>
+        </div>
+        <div @click.stop.pervent="addFirst" class="buy" v-show="!food.count || food.count ===0" transition="fade">
+          加入购物车
+        </div>
       </div>
-      <div class="cartcontrol-wrapper">
-        <cartcontrol :food="food"></cartcontrol>
+      <split v-show="food.info"></split>
+      <div class="info" v-show="food.info">
+        <h1 class="title">商品信息</h1>
+        <p class="text">{{food.info}}</p>
       </div>
-      <div @click.stop.pervent="addFirst" class="buy" v-show="!food.count || food.count ===0" transition="fade">加入购物车</div>
+      <split v-show="food.info"></split>
+      <div class="rating">
+        <h1 class="title">商品评价</h1>
+        <ratingselect :select-type="selectType" :only-content="onlyContent" :desc="desc" :ratings="food,ratings"></ratingselect>
+      </div>
     </div>
   </div>
 </template>
@@ -27,6 +39,11 @@
   import Vue from 'vue';
   import BScroll from 'better-scroll';
   import cartcontrol from 'components/cartcontrol/cartcontrol';
+  import split from 'components/split/split';
+  import ratingselect from 'components/ratingselect/ratingselect';
+  //  const POSITIVE = 0;
+  //  const NEGATIVE = 1;
+  const ALL = 2;
   export default {
     props: {
       food: {
@@ -36,12 +53,21 @@
     },
     data() {
       return {
-        showFlag: false
+        showFlag: false,
+        selectType: ALL,
+        onlyContent: true,
+        desc: {
+          all: '全部',
+          positive: '推荐',
+          negative: '吐槽'
+        }
       };
     },
     methods: {
       show() {
         this.showFlag = true;
+        this.selectType = ALL;
+        this.onlyContent = true;
         this.$nextTick(() => {
           if (!this.scroll) {
             this.scroll = new BScroll(this.$els.food, {
@@ -63,7 +89,9 @@
       }
     },
     components: {
-      cartcontrol
+      cartcontrol,
+      split,
+      ratingselect
     }
   };
 </script>
@@ -103,6 +131,7 @@
           font-size: 20px
           color: #ffffff
     .content
+      position: relative
       padding: 18px
       .title
         line-height: 14px
@@ -130,30 +159,47 @@
         .old
           text-decoration: line-through
           color: rgb(147, 153, 159)
-  // TODO: 样式稍微有一些问题,使用负margin的方式进行解决,
-    .cartcontrol-wrapper
-      position: absolute
-      right: 12px
-      margin-top: -52px
-    /*bottom: 12px*/
-    .buy
-      position: absolute
-      right: 18px
-      /*bottom: 18px*/
-      margin-top: -44px
-      z-index: 10
-      height: 24px
-      line-height: 24px
-      padding: 0 12px
-      box-sizing: border-box
-      font-size: 10px
-      border-radius: 12px
-      color: #ffffff
-      background-color: rgb(0, 160, 220)
-      &.fade-transition
-        transition: all 0.2s
-        opacity: 1
-      &.fade-enter, &.fade-leave
-        opacity: 0
+      .cartcontrol-wrapper
+        position: absolute
+        right: 12px
+        bottom: 12px
+      .buy
+        position: absolute
+        right: 18px
+        bottom: 18px
+        z-index: 10
+        height: 24px
+        line-height: 24px
+        padding: 0 12px
+        box-sizing: border-box
+        font-size: 10px
+        border-radius: 12px
+        color: #ffffff
+        background-color: rgb(0, 160, 220)
+        &.fade-transition
+          transition: all 0.2s
+          opacity: 1
+        &.fade-enter, &.fade-leave
+          opacity: 0
+    .info
+      padding: 18px
+      .title
+        line-height: 14px
+        margin-bottom: 6px
+        font-size: 14px
+        color: rgba(7, 17, 27, 1)
+      .text
+        line-height: 24px
+        padding: 0 8px
+        font-size: 12px
+        color: rgba(77, 85, 93, 1)
+    .rating
+      padding-top: 18px
+      .title
+        line-height: 14px
+        margin-left: 18px
+        font-size: 14px
+        color: rgba(7, 17, 27, 1)
       test: test
+
 </style>

@@ -29,4 +29,4 @@ router.map({
 // 启用router
 router.start(app, '#app');
 // 启动时默认的地方
-router.go('/goods');
+router.go('/ratings');

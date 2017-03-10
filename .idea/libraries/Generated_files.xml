@@ -3,6 +3,7 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/dist/dist/static/js/manifest.789aa10945eb861c42d8.js" />
+        <item url="file://$PROJECT_DIR$/dist/src/common/js/date.js" />
         <item url="file://$PROJECT_DIR$/dist/dist/static/js/app.52492bf241c77e622b63.js" />
       </sourceFilesUrls>
     </properties>
@@ -26,6 +27,7 @@
       <root url="file://$PROJECT_DIR$/dist/model/config/dev.env.js" />
       <root url="file://$PROJECT_DIR$/dist/src/main.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/static/js/manifest.789aa10945eb861c42d8.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/common/js/date.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/static/js/app.52492bf241c77e622b63.js" />
     </CLASSES>
     <SOURCES />

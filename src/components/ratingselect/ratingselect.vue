@@ -72,6 +72,7 @@
           return;
         }
         this.onlyContent = !this.onlyContent;
+//        console.log(this.onlyContent);
         this.$dispatch('content.toggle', this.onlyContent);
       }
     }
